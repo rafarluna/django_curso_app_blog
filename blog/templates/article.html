@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+
+
+{%block content%}
+
+    <h2>{{article.name}}</h2>
+    {{article.category.login_required}} {{request.user.is_authenticated}}
+    {%if article.category.login_required and not request.user.is_authenticated%}
+        <p>{{article.text|truncatewords:10}}</p>
+
+        <div class="alert alert-info">Debes estar logeado;
+            <a href="/login">Ingresar</a> ó
+            <a href="/signup">Registrarse</a>
+        </div>
+    {%else%}
+        <p>{{article.text}}</p>
+    {%endif%}
+
+    <hr>
+    Comentarios
+    <br>
+    {%for comment in article.comments.all%}
+    <b>{{comment.author}}</b>
+    <br>
+    fecha: {{comment.created_datetime}}
+    <p>
+        {{comment.text}}
+    </p>
+    <hr>
+    {%endfor%}
+
+    <form action="" method="post">
+        {%csrf_token%}
+        {{form.as_p}}        
+        <button class="btn btn-info" type="submit">Comentar</button>
+    </form>
+    
+{%endblock%}

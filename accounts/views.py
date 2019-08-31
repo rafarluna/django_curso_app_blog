@@ -3,6 +3,12 @@ from django.views import View
 from .forms import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.contrib.auth import logout
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
+
 
 class SignupView(View):
 
@@ -18,7 +24,7 @@ class SignupView(View):
             username = form.cleaned_data['username']
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
-            user = User.objects.create(username=username, is_active=True)
+            user = User.objects.create(username=username, email=email, is_active=True)
             user.set_password(password)
             user.save()
             login(request, user) #, backend="django.contrib.auth.backends.ModelBackend")

@@ -19,6 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('apis/', include('eventos.apis.urls')),
     path('', include('accounts.urls')),
     path('', include('blog.urls')),
 #    path('', HomeView.as_view())

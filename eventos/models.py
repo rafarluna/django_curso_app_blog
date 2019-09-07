@@ -6,6 +6,7 @@ class Event(models.Model):
     description = models.TextField()
     datetime = models.DateTimeField()
     place = models.TextField()
+    owner = models.ForeignKey(User, related_name='events', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

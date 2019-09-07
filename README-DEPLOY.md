@@ -12,6 +12,11 @@ source env/bin/activate
 
 git clone https://darkkase@bitbucket.org/darkkase/bedu_blog_example.git
 
+cd bedu_blog_example
+
+(pip freeze > requirments.txt)
+pip install -r requirments.txt
+
 ## instalar y configurar nginx 
 
 sudo apt install nginx

@@ -3,6 +3,7 @@ from django.views import View
 from .models import *
 from .forms import *
 
+from django.template.loader import get_template
 
 class HomeView(View):
 

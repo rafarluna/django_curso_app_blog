@@ -2,18 +2,23 @@
 
 
 {%block content%}
-    {%for category in categories%}
-        <a href="/{{category.id}}/">
-            {{category.name}}
-        </a> |
-    {%endfor%}
+{{company_name}}
 
-    <hr>
     {%for article in articles%}
+    <div class="blog-entry">
         <a href="/{{article.category.id}}/{{article.id}}/">
-            <h2>{{article.name}}</h2>
+            <h3>{{article.name}}</h3>
         </a>
+        <div>
+            <p class="lead"><i class="fa fa-user"></i> 
+            by <a href="">{{article.author}}</a>
+        </div>
         <p>{{article.text|truncatewords:10}}</p>
-        <hr>
+        <div class="text-left align-bottom">
+            <a href="/{{article.category.id}}">
+                <span class="badge badge-success text-right">{{article.category}}</span>
+            </a>
+        </div>
+    </div> 
     {%endfor%}
 {%endblock%}

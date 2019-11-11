@@ -1,0 +1,18 @@
+https://bitbucket.org/darkkase/bedu_blog_example/src/master/
+
+que hacer
+    virtualenv
+    bajar el code 
+    pip install -r requirements.txt
+    python manage.py migrate
+
+hacer articulos y categorias con el admin
+modificar el navbar y ponerlo en todas las paginas
+agregar author al articulos 
+visualizar la categoria y el author en todos lados donde se listen articulos
+ocultar los comentarios y el formulario de comentario en el articulo si este reuiere login
+mostrar el autor en el articulo
+agregar articulos relacionados al articulo
+embellecer todo .V
+
+

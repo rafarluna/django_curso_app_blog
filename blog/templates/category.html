@@ -15,4 +15,9 @@
         <hr>
     {%endfor%}
 
+    {%if articles.count == 0 %}
+        <h4>
+            NO HAY ARTICULOS PARA ESTA CATEGORIA
+        </h4>
+    {%endif%}
 {%endblock%}

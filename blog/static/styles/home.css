@@ -1,0 +1,23 @@
+.blog-entry {
+    padding: 3%;
+    min-height: 300px;
+    border-radius: 20px;
+    border: 2px solid #73AD21;
+    margin-bottom: 20px;
+}
+
+.menu-text {
+    color: #73AD21;
+    padding: 5px;
+}
+
+a.menu-text {
+    text-decoration: none;
+}
+
+.menu-text:hover {
+    color: white;
+    background: #73AD21;
+    border-radius: 5px;
+    padding: 5px;
+}

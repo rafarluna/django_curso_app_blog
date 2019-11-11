@@ -4,7 +4,7 @@
 {%block content%}
 
     <h2>{{article.name}}</h2>
-
+    <h4>{{article.author}}</h4>
     {%if article.category.login_required and not request.user.is_authenticated%}
         <p>{{article.text|truncatewords:10}}</p>
 
@@ -16,23 +16,33 @@
         <p>{{article.text}}</p>
     {%endif%}
 
-    <hr>
-    Comentarios
-    <br>
-    {%for comment in article.comments.all%}
-    <b>{{comment.author}}</b>
-    <br>
-    fecha: {{comment.created_datetime}}
-    <p>
-        {{comment.text}}
-    </p>
-    <hr>
-    {%endfor%}
+    {%if article.category.login_required and not request.user.is_authenticated%}
+        <p>No puedes ver los comentarios</p>
 
-    <form action="" method="post">
-        {%csrf_token%}
-        {{form.as_p}}        
-        <button class="btn btn-info" type="submit">Comentar</button>
-    </form>
-    
+        <div class="alert alert-info">Debes estar logeado;
+            <a href="/login">Ingresar</a> ó
+            <a href="/signup">Registrarse</a>
+        </div>
+    {%else%}
+        <hr>
+        Comentarios
+        <br>
+        {%for comment in article.comments.all%}
+        <b>{{comment.author}}</b>
+        <br>
+        fecha: {{comment.created_datetime}}
+        <p>
+            {{comment.text}}
+        </p>
+        <hr>
+        {%endfor%}
+
+        <form action="" method="post">
+            {%csrf_token%}
+            {{form.as_p}}        
+            <button class="btn btn-info" type="submit">Comentar</button>
+        </form>
+    {%endif%}
+
+
 {%endblock%}
